@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+html, body {
+  font-family: "Rye", serif;
+}
+
+@theme {
+  --font-sans: "Rye", serif;
+  --font-mono: "Rye", serif;
+  --font-display: "Rye", serif;
+  
+  --color-brand-green: #012a17;
+  --color-brand-gold: var(--brand-theme, #a38f58);
+  --color-brand-black: #000000;
+  --color-primary-white: #cad5e2;
+  --color-primary-gray: #F8F9FA;
+  --color-brand-white: var(--color-primary-white);
+
+  /* Soft White Palette to replace grays */
+  --color-gray-50: #ffffff;
+  --color-gray-100: #f9f9fb;
+  --color-gray-200: #f4f4f7;
+  --color-gray-300: #f1f3f5;
+  --color-gray-400: #e9ecef;
+  --color-gray-500: #dee2e6;
+  --color-gray-600: #ced4da;
+  --color-gray-700: #adb5bd;
+  --color-gray-800: #6c757d;
+  --color-gray-900: #495057;
+
+  --color-slate-50: #ffffff;
+  --color-slate-100: #f9f9fb;
+  --color-slate-200: #f4f4f7;
+  --color-slate-300: #f1f3f5;
+  --color-slate-400: #e9ecef;
+  --color-slate-500: #dee2e6;
+  --color-slate-600: #ced4da;
+  --color-slate-700: #adb5bd;
+  --color-slate-800: #6c757d;
+  --color-slate-900: #495057;
+}
+
+@utility clip-brand {
+  clip-path: polygon(8% 0, 100% 0, 100% 80%, 92% 100%, 0 100%, 0 20%);
+}
+
+/* Custom Basha Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1a472a;
+  border: 2px solid #c5a059;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #1a472a #0a0a0a;
+}
+
+/* Sidebar Specific Mini-Scrollbar */
+.sidebar-nav {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px); /* Leaves room for logo/footer */
+}
+
+/* Slimmer style for the nav scrollbar */
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #c5a059; /* Gold accent for the nav scroll */
+  border-radius: 10px;
+}
+
+/* Custom Select Dropdowns */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c5a059' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c5a059' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem !important;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(197, 160, 89, 0.3) !important;
+  color: #fff !important;
+  font-family: inherit;
+  font-weight: 700 !important;
+}
+
+select:hover {
+  border-color: rgba(197, 160, 89, 1) !important;
+  background-color: rgba(197, 160, 89, 0.05) !important;
+}
+
+select:focus {
+  border-color: #c5a059 !important;
+  box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1);
+  outline: none;
+}
+
+select option {
+  background-color: #061d0a;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Prevent layout shifts with Rye font */
+.main-layout-container {
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+/* Auth Input Focus Interaction Layering */
+.basha-input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #c5a059;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+  outline: none;
+  transition: all 0.2s;
+  pointer-events: auto;
+}
+
+.basha-input:focus {
+  border-color: #c5a059;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active User Badges in Comms */
+.active-user-badge {
+  display: flex;
+  align-items: center;
+  background: rgba(26, 71, 42, 0.8); /* Emerald with transparency */
+  border: 1px solid #c5a059; /* Gold Border */
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.online-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: #2d5a3c; /* Muted Emerald Win Color */
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #c5a059; /* Gold Glow */
+  animation: pulse_indicator 2s infinite;
+}
+
+@keyframes pulse_indicator {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

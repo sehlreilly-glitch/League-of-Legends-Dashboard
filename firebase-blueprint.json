@@ -1,0 +1,77 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores student and coach profiles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["Coach", "Student", "Pending"] },
+        "isApproved": { "type": "boolean" },
+        "assignedAssignment": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Team chat messages",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "channelId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["text", "senderId", "createdAt"]
+    },
+    "CoachBroadcast": {
+      "title": "Coach Broadcast",
+      "description": "Global messages from coach",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "authorId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["text", "createdAt"]
+    },
+    "ScoutingReport": {
+      "title": "Scouting Report",
+      "description": "Individual scouting and match data",
+      "type": "object",
+      "properties": {
+        "team": { "type": "string" },
+        "opponent": { "type": "string" },
+        "submittedBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["team", "opponent", "submittedBy", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "UserProfile",
+      "description": "Main user collection"
+    },
+    "users/{userId}/fcm_tokens": {
+      "schema": { "type": "object", "properties": { "token": { "type": "string" } } },
+      "description": "User device tokens for push notifications"
+    },
+    "chat_messages": {
+      "schema": "ChatMessage",
+      "description": "Global chat messages"
+    },
+    "coach_broadcasts": {
+      "schema": "CoachBroadcast",
+      "description": "Coaches command messages"
+    },
+    "scouting_reports": {
+      "schema": "ScoutingReport",
+      "description": "Compiled scouting reports"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Basha League of Legends Player Hub",
+  "description": "Professional scouting and tactical preparation tool for League of Legends teams, featuring player performance analytics and match prep modules.",
+  "requestFramePermissions": ["camera", "microphone", "display-capture"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
